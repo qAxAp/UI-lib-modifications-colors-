@@ -1,3 +1,4 @@
+
 -- Instances: 147 | Scripts: 0 | Modules: 1
 local DRR = {};
 
@@ -1780,3 +1781,32 @@ end;
 };
 
 return require(DRR["93"]);
+
+-- Adding new functions for text boxes and buttons
+function DrRayLibrary.newTextBox(tab, name, placeholder, width, height)
+    local textBox = {
+        type = "textbox",
+        name = name,
+        placeholder = placeholder,
+        width = width,
+        height = height,
+        GetText = function()
+            -- Mock function to get the text from the text box
+            return "Sample text"
+        end
+    }
+    table.insert(tab.elements, textBox)
+    print("Added text box:", name, "to tab:", tab.name)
+    return textBox
+end
+
+function DrRayLibrary.newButton(tab, name, description, callback)
+    local button = {
+        type = "button",
+        name = name,
+        description = description,
+        callback = callback
+    }
+    table.insert(tab.elements, button)
+    print("Added button:", name, "to tab:", tab.name)
+end
